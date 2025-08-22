@@ -23,22 +23,46 @@
         <section id = "main" class = "main-content">
             <div class = "section-content" >
                 <p>Music player to play music:</p>
-                <audio id = "audioContent">
-                    <source src = "music.mp3" type = "audio/mpeg">
+
+                <div class = "file-input">
+                    <input type = "file" id = "audioFile" accept = "audio/*">
+                    <p> Choose any audio file from your device</p>
+                </div>
+
+                <audio id = "audioPlayer">
+                    Supported types: MP3
                 </audio>
-                <button onclick="playAudio()">Play</button>
-                <button onclick="pauseAudio()">Pause</button>
+
+                <div class = "audio-controls">
+                    <button id = "playBtn" disabled>Play</button>
+                    <button id = "pauseBtn" disabled>Pause</button>
+                    <button id = "muteBtn" disabled>Mute</button>
+                </div>
+
+                <div class = "volume-content">
+                    <span></span>
+                    <input type = "range" id = "volumeSlider" min = "0" max = "100" value = "50">
+                </div>
+
+                <div class = "audio-info" id = "audioInfo" style = "display: none">
+                    <p>File: <span id = "fileName"></span></p>
+                    <p><strong>Duration:</strong> <span id = "fileDuration"></span></p>
+                </div>
 
                 <script>
-                    const audio = document.getElementById('myAudio');
+                    const audioFile = document.getElementById('audioFile');
 
-                    function playAudio() {
-                        audio.play();
-                    }
+                    let isPlaying = false;
 
-                    function pauseAudio() {
-                        audio.pause();
-                    }
+                    // File selection
+                    audioFile.addEventListener('change', function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const url = URL.createObjectURL(file);
+                            audioPlayer.src = url;
+                            audioPlayer.systle.display = 'block';
+                        }
+                    });
                 </script>
             </div>
         </section>
