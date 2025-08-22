@@ -19,7 +19,33 @@
                 </nav>
             </div>
         </header>
+
+        <section id = "main" class = "main-content">
+            <div class = "section-content" >
+                <p>Music player to play music:</p>
+                <audio id = "audioContent">
+                    <source src = "music.mp3" type = "audio/mpeg">
+                </audio>
+                <button onclick="playAudio()">Play</button>
+                <button onclick="pauseAudio()">Pause</button>
+
+                <script>
+                    const audio = document.getElementById('myAudio');
+
+                    function playAudio() {
+                        audio.play();
+                    }
+
+                    function pauseAudio() {
+                        audio.pause();
+                    }
+                </script>
+            </div>
+        </section>
+
     </body>
+
+
 
     <footer>
         <p>Giovanni Muniz 2025</p>
