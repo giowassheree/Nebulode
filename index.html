@@ -34,8 +34,8 @@
                 </audio>
 
                 <div class = "audio-controls">
-                    <button id = "playBtn" disabled>Play</button>
-                    <button id = "pauseBtn" disabled>Pause</button>
+                    <button id = "playBtn" >Play</button>
+                    <button id = "pauseBtn" >Pause</button>
                     <button id = "muteBtn" disabled>Mute</button>
                 </div>
 
@@ -61,8 +61,31 @@
                             const url = URL.createObjectURL(file);
                             audioPlayer.src = url;
                             audioPlayer.systle.display = 'block';
+
+                            // Enable the controls for audio
+                            playBtn.disabled = false;
+                            pauseBtn.disabled = false;
+                            stopBtn.disabled = false;
+                            volumeSlider.disabled = false;
+
+                            // Show the file info
+                            fileName.textContent = file.name;
+                            audioInfo.style.display = 'block';
+
+                            // Set the intial volume
+                            audioPlayer.volume = volumeSlider.value / 100;
+
                         }
                     });
+
+                    // Play Button
+                    playBtn.addEventListener('click', () => {
+                        audioPlayer.play();
+                    })
+
+                    pauseBtn.addEventListener('click', () => {
+                        audioPlayer.pause();
+                    })
                 </script>
             </div>
         </section>
